@@ -44,12 +44,14 @@ body {
  */
 .text-scrim {
   --bleed: 80px;
+  /* Phones crop to the kitten's brighter body behind the text, so they need more. */
+  --scrim-peak: 0.5;
   position: absolute;
   inset: calc(var(--bleed) * -1);
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(17, 17, 17, 0.45) var(--bleed),
+    rgba(17, 17, 17, var(--scrim-peak)) var(--bleed),
     rgba(17, 17, 17, 0.25) calc(100% - var(--bleed))
   );
   -webkit-mask-image:
@@ -60,4 +62,10 @@ body {
     linear-gradient(to right, transparent 0, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent 100%),
     linear-gradient(to bottom, transparent 0, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent 100%);
   mask-composite: intersect;
+}
+
+@media (min-width: 48rem) {
+  .text-scrim {
+    --scrim-peak: 0.45;
+  }
 }

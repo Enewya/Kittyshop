@@ -26,10 +26,10 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-4 top-4 z-20 md:inset-x-8 md:top-4 xl:left-[165px] xl:right-[165px]">
+    <header className="absolute inset-x-4 top-3 z-20 md:inset-x-8 md:top-4 xl:left-[165px] xl:right-[165px]">
       <nav
         aria-label="Main"
-        className="flex h-[60px] items-center justify-between rounded-full bg-white pl-6 pr-2 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pl-8 md:pr-1"
+        className="flex h-10 items-center justify-between rounded-full bg-white pl-5 pr-0.5 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pl-8 md:pr-1"
       >
         <Link
           href="/"
@@ -57,7 +57,7 @@ export function SiteNav() {
 
         <button
           type="button"
-          className="flex size-11 items-center justify-center rounded-full text-ink md:hidden"
+          className="flex size-9 items-center justify-center rounded-full text-ink md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
