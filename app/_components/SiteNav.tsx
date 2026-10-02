@@ -33,7 +33,7 @@ export function SiteNav() {
       >
         <Link
           href="/"
-          className="font-display text-sm/5 font-bold tracking-[0.1px] text-ink"
+          className="font-display text-base/6 font-bold tracking-[0.15px] text-ink"
         >
           KittyShop
         </Link>
