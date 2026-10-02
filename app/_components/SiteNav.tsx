@@ -11,7 +11,7 @@ const LINKS = [
 ];
 
 const ctaClass =
-  "items-center justify-center rounded-full bg-ink px-5 py-2 text-[15px] font-medium text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
+  "items-center justify-center rounded-full bg-ink px-5 py-2 text-sm/5 font-medium tracking-[0.1px] text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ export function SiteNav() {
       >
         <Link
           href="/"
-          className="font-display text-[22px] font-bold tracking-tight text-ink"
+          className="font-display text-sm/5 font-bold tracking-[0.1px] text-ink"
         >
           KittyShop
         </Link>
@@ -43,7 +43,7 @@ export function SiteNav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-[17px] text-ink transition-opacity hover:opacity-70"
+                className="text-sm/5 font-medium tracking-[0.1px] text-ink transition-opacity hover:opacity-70"
               >
                 {link.label}
               </a>
@@ -93,7 +93,7 @@ export function SiteNav() {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-2xl px-4 py-3 text-[17px] text-ink hover:bg-black/5"
+                className="block rounded-2xl px-4 py-3 text-sm/5 font-medium tracking-[0.1px] text-ink hover:bg-black/5"
               >
                 {link.label}
               </a>

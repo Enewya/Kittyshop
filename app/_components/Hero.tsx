@@ -29,12 +29,12 @@ export function Hero() {
             <span className="block">A companion</span>
             <span className="block">worth waiting for</span>
           </h1>
-          <p className="hero-subhead mt-1 text-paper">
+          <p className="hero-subhead font-normal text-paper">
             Reserve your kitten from our litter.
           </p>
           <a
             href="#kittens"
-            className="mt-8 inline-flex items-center rounded-full bg-paper px-7 py-4 text-lg font-medium text-ink transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper md:text-xl"
+            className="hero-cta inline-flex h-12 items-center rounded-full bg-paper px-6 py-3.5 text-sm/5 font-medium tracking-[0.1px] text-ink transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
           >
             See available kittens
           </a>
