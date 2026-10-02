@@ -49,7 +49,7 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(17, 17, 17, 0.45) var(--bleed),
+    rgba(17, 17, 17, 0.4) var(--bleed),
     rgba(17, 17, 17, 0.25) calc(100% - var(--bleed))
   );
   -webkit-mask-image:

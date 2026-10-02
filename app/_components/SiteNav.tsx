@@ -26,7 +26,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-4 top-4 z-20 md:inset-x-8 md:top-8 xl:left-[165px] xl:right-[165px] xl:top-12">
+    <header className="absolute inset-x-4 top-4 z-20 md:inset-x-8 md:top-8 xl:left-[165px] xl:right-[165px] xl:top-7">
       <nav
         aria-label="Main"
         className="flex h-[60px] items-center justify-between rounded-full bg-white pl-6 pr-2 shadow-[0_4px_24px_rgba(17,17,17,0.08)] backdrop-blur-md supports-[backdrop-filter]:bg-white/85 md:h-[68px] md:pl-8 md:pr-2.5"
