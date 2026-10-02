@@ -8,7 +8,8 @@ import { usePointerFraction } from "../_hooks/usePointerFraction";
 const POSTER_SRC = "/hero-poster.jpg";
 const VIDEO_SRC = "/hero-scrub.mp4";
 
-// The clip is 124 frames over ~5.17s (24fps). Skip seeks within two frames of
+// The clip is 98 frames over ~4.08s (24fps), sweeping left profile -> facing
+// camera -> right profile. Skip seeks within two frames of
 // the current time; fast movement otherwise queues more seeks than the decoder
 // can drain.
 const MIN_SEEK_DELTA = 1 / 12;
@@ -39,6 +40,21 @@ export function HeroScrubber({ trackRef }: Props) {
     const video = videoRef.current;
     if (video && fraction !== null) seekToFraction(video, fraction);
   }, [fraction]);
+
+  // Open on the front-facing pose (the clip's midpoint, matching the poster)
+  // rather than the side-on first frame. Skipped if the pointer got there first.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const showMidpoint = () => {
+      if (latestFraction.current === null && Number.isFinite(video.duration)) {
+        video.currentTime = video.duration / 2;
+      }
+    };
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) showMidpoint();
+    video.addEventListener("loadedmetadata", showMidpoint);
+    return () => video.removeEventListener("loadedmetadata", showMidpoint);
+  }, [canScrub]);
 
   // A pointermove skipped while a seek was in flight would otherwise leave the
   // frame stale once the cursor stops. Re-apply the latest position when the
