@@ -11,7 +11,7 @@ const LINKS = [
 ];
 
 const ctaClass =
-  "items-center justify-center rounded-full bg-ink px-5 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
+  "items-center justify-center rounded-full bg-ink px-5 py-2 text-[15px] font-medium text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -26,10 +26,10 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-4 top-4 z-20 md:inset-x-8 md:top-5 xl:left-[165px] xl:right-[165px]">
+    <header className="absolute inset-x-4 top-4 z-20 md:inset-x-8 md:top-4 xl:left-[165px] xl:right-[165px]">
       <nav
         aria-label="Main"
-        className="flex h-[60px] items-center justify-between rounded-full bg-white pl-6 pr-2 shadow-[0_4px_24px_rgba(17,17,17,0.08)] backdrop-blur-md supports-[backdrop-filter]:bg-white/85 md:h-14 md:pl-8 md:pr-1.5"
+        className="flex h-[60px] items-center justify-between rounded-full bg-white pl-6 pr-2 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pl-8 md:pr-1"
       >
         <Link
           href="/"
