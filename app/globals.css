@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf8;
+  --foreground: #111111;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ink: #111111;
+  --color-paper: #fafaf8;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Hero type scale: the subhead is locked to 57.5% of the headline size. */
+.hero-type {
+  --hero-headline: clamp(2.25rem, 4.2vw, 3.75rem);
+}
+
+.hero-headline {
+  font-size: var(--hero-headline);
+  line-height: 1.12;
+  text-shadow: 0 1px 24px rgba(17, 17, 17, 0.55);
+}
+
+.hero-subhead {
+  font-size: calc(var(--hero-headline) * 0.575);
+  line-height: 1.3;
+  text-shadow: 0 1px 24px rgba(17, 17, 17, 0.55);
+}
+
+/*
+ * Local scrim behind the text block. The element extends --bleed past the text
+ * on every side; the mask feathers only that bleed, so across the text's full
+ * height the opacity never drops below the 25% floor.
+ */
+.text-scrim {
+  --bleed: 80px;
+  position: absolute;
+  inset: calc(var(--bleed) * -1);
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(17, 17, 17, 0.45) var(--bleed),
+    rgba(17, 17, 17, 0.25) calc(100% - var(--bleed))
+  );
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 var(--bleed), #000 calc(100% - var(--bleed)), transparent 100%);
+  mask-composite: intersect;
 }
