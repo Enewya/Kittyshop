@@ -8,10 +8,9 @@ import { usePointerFraction } from "../_hooks/usePointerFraction";
 const POSTER_SRC = "/hero-poster.jpg";
 const VIDEO_SRC = "/hero-scrub.mp4";
 
-// The clip is 98 frames over ~4.08s (24fps), sweeping left profile -> facing
-// camera -> right profile. Skip seeks within two frames of
-// the current time; fast movement otherwise queues more seeks than the decoder
-// can drain.
+// The clip is 99 frames over 4.125s (24fps), sweeping left profile -> facing
+// camera -> right profile. Skip seeks within two frames of the current time;
+// fast movement otherwise queues more seeks than the decoder can drain.
 const MIN_SEEK_DELTA = 1 / 12;
 
 function seekToFraction(video: HTMLVideoElement, fraction: number) {
@@ -41,19 +40,28 @@ export function HeroScrubber({ trackRef }: Props) {
     if (video && fraction !== null) seekToFraction(video, fraction);
   }, [fraction]);
 
-  // Open on the front-facing pose (the clip's midpoint, matching the poster)
-  // rather than the side-on first frame. Skipped if the pointer got there first.
+  // Put the video on the right frame: the cursor's position if it has moved,
+  // otherwise the front-facing midpoint that matches the poster. Assigns
+  // currentTime directly (no `seeking` guard) so it also cancels a seek left
+  // hanging when the page was frozen.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    const showMidpoint = () => {
-      if (latestFraction.current === null && Number.isFinite(video.duration)) {
-        video.currentTime = video.duration / 2;
-      }
+    const init = () => {
+      if (!Number.isFinite(video.duration)) return;
+      video.currentTime = (latestFraction.current ?? 0.5) * video.duration;
     };
-    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) showMidpoint();
-    video.addEventListener("loadedmetadata", showMidpoint);
-    return () => video.removeEventListener("loadedmetadata", showMidpoint);
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) init();
+    };
+    video.addEventListener("loadedmetadata", init);
+    window.addEventListener("pageshow", onPageShow);
+    // On a cached load, loadedmetadata may have fired before we got here.
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) init();
+    return () => {
+      video.removeEventListener("loadedmetadata", init);
+      window.removeEventListener("pageshow", onPageShow);
+    };
   }, [canScrub]);
 
   // A pointermove skipped while a seek was in flight would otherwise leave the
