@@ -34,7 +34,7 @@ export function Hero() {
           </p>
           <a
             href="#kittens"
-            className="hero-cta inline-flex h-14 items-center rounded-full bg-paper px-6 text-base/6 font-medium tracking-[0.15px] text-ink transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
+            className="hero-cta inline-flex h-12 items-center rounded-full bg-paper px-7 py-3 text-base/6 font-medium tracking-[0.15px] text-ink transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
           >
             See available kittens
           </a>

@@ -26,10 +26,10 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-4 top-2 z-20 md:inset-x-8 md:top-3 xl:left-[165px] xl:right-[165px]">
+    <header className="absolute inset-x-4 top-3 z-20 md:inset-x-8 xl:left-[165px] xl:right-[165px]">
       <nav
         aria-label="Main"
-        className="flex h-10 items-center justify-between rounded-full bg-white pl-5 pr-0.5 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pl-8 md:pr-1"
+        className="relative flex h-10 items-center justify-between rounded-full bg-white pl-5 pr-0.5 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pl-8 md:pr-1"
       >
         <Link
           href="/"
@@ -38,7 +38,7 @@ export function SiteNav() {
           KittyShop
         </Link>
 
-        <ul className="hidden items-center md:flex">
+        <ul className="hidden items-center md:absolute md:left-1/2 md:flex md:-translate-x-1/2">
           {LINKS.map((link) => (
             <li key={link.href}>
               <a
