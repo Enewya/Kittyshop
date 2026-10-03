@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --color-ink: #111111;
   --color-paper: #fafaf8;
+  --color-accent: #1f5f55;
+  --color-accent-strong: #184c44;
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
 }
@@ -23,10 +25,10 @@ body {
 /*
  * Hero type on the Material Design 3 scale, at full size from 1280px:
  * headline = Display Medium at 45px (leading tightened from 52px to 48px),
- * subhead = Title Large (22/28, 49% of the headline). Below 1280px
- * everything scales with the headline, which clamps between 32px and 45px.
- * The 16px / 32px gaps are deliberately unequal: headline + subhead are one
- * unit, the button a separate action.
+ * subhead = Title Large at 22px (leading tightened from 28px to 26px, 49% of
+ * the headline). Below 1280px everything scales with the headline, which
+ * clamps between 32px and 45px. The 12px / 24px gaps are deliberately 1:2:
+ * headline + subhead are one unit, the button a separate action.
  */
 .hero-type {
   --hero-headline: clamp(2rem, 3.515625vw, 2.8125rem);
@@ -39,14 +41,14 @@ body {
 }
 
 .hero-subhead {
-  margin-top: clamp(12px, calc(var(--hero-headline) * 16 / 45), 16px);
+  margin-top: clamp(8px, calc(var(--hero-headline) * 12 / 45), 12px);
   font-size: max(1rem, calc(var(--hero-headline) * 22 / 45));
-  line-height: calc(28 / 22);
+  line-height: calc(26 / 22);
   text-shadow: 0 1px 24px rgba(17, 17, 17, 0.55);
 }
 
 .hero-cta {
-  margin-top: clamp(24px, calc(var(--hero-headline) * 32 / 45), 32px);
+  margin-top: clamp(16px, calc(var(--hero-headline) * 24 / 45), 24px);
 }
 
 /*
