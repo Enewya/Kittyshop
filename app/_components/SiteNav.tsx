@@ -26,7 +26,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-4 top-3 z-20 md:inset-x-8 md:top-4 xl:left-[165px] xl:right-[165px]">
+    <header className="absolute inset-x-4 top-2 z-20 md:inset-x-8 md:top-3 xl:left-[165px] xl:right-[165px]">
       <nav
         aria-label="Main"
         className="flex h-10 items-center justify-between rounded-full bg-white pl-5 pr-0.5 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pl-8 md:pr-1"
@@ -38,12 +38,12 @@ export function SiteNav() {
           KittyShop
         </Link>
 
-        <ul className="hidden items-center gap-6 md:flex lg:gap-8">
+        <ul className="hidden items-center md:flex">
           {LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm/5 font-medium tracking-[0.1px] text-ink transition-opacity hover:opacity-70"
+                className="inline-flex h-10 items-center rounded-full px-3 text-sm/5 font-medium tracking-[0.1px] text-ink transition-colors hover:bg-ink/8 focus-visible:outline-2 focus-visible:outline-ink"
               >
                 {link.label}
               </a>
