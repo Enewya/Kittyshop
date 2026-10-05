@@ -11,7 +11,7 @@ const LINKS = [
 ];
 
 const ctaClass =
-  "items-center justify-center rounded-full bg-ink px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
+  "items-center justify-center rounded-full bg-accent px-3 py-2 text-sm/5 font-medium tracking-[0.1px] text-paper transition-colors hover:bg-accent-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -26,24 +26,24 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="absolute inset-x-4 top-4 z-20 md:inset-x-8 md:top-8 xl:left-[165px] xl:right-[165px] xl:top-7">
+    <header className="absolute inset-x-4 top-3 z-20 md:inset-x-8 xl:left-[165px] xl:right-[165px]">
       <nav
         aria-label="Main"
-        className="flex h-[60px] items-center justify-between rounded-full bg-white pl-6 pr-2 shadow-[0_4px_24px_rgba(17,17,17,0.08)] backdrop-blur-md supports-[backdrop-filter]:bg-white/85 md:h-[68px] md:pl-8 md:pr-2.5"
+        className="relative flex h-10 items-center justify-between rounded-full bg-white pl-6 pr-0.5 shadow-[0_4px_24px_rgba(17,17,17,0.08)] supports-[backdrop-filter]:bg-white/55 supports-[backdrop-filter]:backdrop-blur-2xl md:h-12 md:pr-2"
       >
         <Link
           href="/"
-          className="font-display text-[22px] font-bold tracking-tight text-ink"
+          className="font-display text-base/6 font-bold tracking-[0.15px] text-ink"
         >
           KittyShop
         </Link>
 
-        <ul className="hidden items-center gap-6 md:flex lg:gap-8">
+        <ul className="hidden items-center md:absolute md:left-1/2 md:flex md:-translate-x-1/2">
           {LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-[17px] text-ink transition-opacity hover:opacity-70"
+                className="inline-flex h-10 items-center rounded-full px-3 text-sm/5 font-medium tracking-[0.1px] text-ink transition-colors hover:bg-ink/8 focus-visible:outline-2 focus-visible:outline-ink"
               >
                 {link.label}
               </a>
@@ -57,7 +57,7 @@ export function SiteNav() {
 
         <button
           type="button"
-          className="flex size-11 items-center justify-center rounded-full text-ink md:hidden"
+          className="flex size-9 items-center justify-center rounded-full text-ink md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -93,7 +93,7 @@ export function SiteNav() {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-2xl px-4 py-3 text-[17px] text-ink hover:bg-black/5"
+                className="block rounded-2xl px-4 py-3 text-sm/5 font-medium tracking-[0.1px] text-ink hover:bg-black/5"
               >
                 {link.label}
               </a>
